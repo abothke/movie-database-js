@@ -38,3 +38,28 @@ const sortMovies = () => {
     return sortMovies
 }
 document.getElementById("alphabet-btn").addEventListener("click", sortMovies);
+
+
+
+
+// Funktion, die die Filme aufsteigend nach Jahr sortiert und darstellt.
+const sortMoviesByYearUp = () => {
+    movies.sort((a, b) => a[1] - b[1]);
+    movieContainer.innerHTML = "";
+    for (let i = 0; i < movies.length; i++) {
+        movieContainer.appendChild(movieElement(movies[i]));
+    }
+    return sortMoviesByYearUp
+}
+document.getElementById("year-up-btn").addEventListener("click", sortMoviesByYearUp);
+
+// Funktion, die die Filme absteigend nach Jahr sortiert und darstellt.
+const sortMoviesByYearDown = () => {
+    movies.sort((a, b) => b[1] - a[1]);
+    movieContainer.innerHTML = "";
+    for (let i = 0; i < movies.length; i++) {
+        movieContainer.appendChild(movieElement(movies[i]));
+    }
+    return sortMoviesByYearDown
+}
+document.getElementById("year-down-btn").addEventListener("click", sortMoviesByYearDown)
