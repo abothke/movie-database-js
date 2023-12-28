@@ -23,10 +23,24 @@ const movieElement = (movie) => {
     return movieDiv;
 }
 
+
+// Funktion, welche alle Werte aus dem DOM mit Klassen, die mit .movie-genre beginnen, die undefined sind, durch einen leeren String ersetzt nachdem der Inhalt durch javascript durch movieElement() erstellt wurde
+
 // for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
 for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
 }
+
+const replaceUndefined = () => {
+    const movieContent = document.querySelectorAll("[class^='movie-genre']");
+    for (let i = 0; i < movieContent.length; i++) {
+        if (movieContent[i].innerHTML === "undefined") {
+            movieContent[i].outerHTML = "<p style='color: #303030;'>e</p>";
+        }
+    }
+    return replaceUndefined
+}
+replaceUndefined();
 
 // funktion, die die Filme nach dem Titel sortiert und in der richtigen Reihenfolge anzeigt
 const sortMovies = () => {
@@ -87,6 +101,7 @@ const searchMovie = () => {
     }
     return searchMovie
 }
-
+// Eventlistener, der die Suchfunktion ausführt, sobald eine Taste gedrückt wird, als eine Art Live-Suche
 document.getElementById("search").addEventListener("keyup", searchMovie);
+
 

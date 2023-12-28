@@ -73,7 +73,7 @@ button {
 display: grid;
 grid-template-columns: repeat(3, 1fr);
 grid-gap: 1rem;
-width: 75%;
+width: 90%;
 margin: 0 auto;
 padding-top: 5rem;
 }
