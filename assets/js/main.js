@@ -87,5 +87,3 @@ const searchMovie = () => {
 }
 // Eventlistener, der die Suchfunktion ausführt, sobald eine Taste gedrückt wird, als eine Art Live-Suche
 document.getElementById("search").addEventListener("keyup", searchMovie);
-
-
