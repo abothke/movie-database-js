@@ -63,3 +63,14 @@ const sortMoviesByYearDown = () => {
     return sortMoviesByYearDown
 }
 document.getElementById("year-down-btn").addEventListener("click", sortMoviesByYearDown)
+
+// funktion, die die Filme nach dem Rating sortiert und in der richtigen Reihenfolge anzeigt
+const sortMoviesByRating = () => {
+    movies.sort((a, b) => b[5] - a[5]);
+    movieContainer.innerHTML = "";
+    for (let i = 0; i < movies.length; i++) {
+        movieContainer.appendChild(movieElement(movies[i]));
+    }
+    return sortMoviesByRating
+}
+document.getElementById("best-rating-btn").addEventListener("click", sortMoviesByRating);
