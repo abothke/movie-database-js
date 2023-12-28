@@ -7,6 +7,25 @@
         <title>movie-database-js</title>
     </head>
     <body>
-    <script src="./assets/js/main.js"></script>
+    <header>
+        <h1>Movies for You</h1>
+        <h2>The best MovieDB</h2>
+        <div id="search-container">
+            <input type="text" id="search" placeholder="Search for a movie...">
+            <button id="search-btn">Search</button>
+        </div>
+        <div id="sort-container">
+            <button id="year-up-btn">Year Up</button>
+            <button id="year-down-btn">Year Down</button>
+            <button id="best-rating-btn">Sort by rating</button>
+            <button id="alphabet-btn">Sort by name (A-Z)</button>
+        </div>
+    </header>
+    <main>
+        <div id="movie-container">
+
+        </div>
+    </main>
+    <script type="module" src="./assets/js/main.js"></script>
     </body>
     </html>

@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    flex-direction: column;
+}
+
+#movie-container {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 1rem;
+width: 75%;
+margin: 0 auto;
+padding-top: 5rem;
+}
+
+.movie{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+}
