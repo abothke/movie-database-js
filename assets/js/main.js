@@ -5,30 +5,30 @@ import { movies } from "./movies.js";
 const movieContainer = document.getElementById("movie-container");
 
 // for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
-const movieElement = () =>{
-for (let i = 0; i < movies.length; i++) {
-  const movieDiv = document.createElement("div");
-  let movie = movies[i];
-  let genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
-  movieDiv.className = "movie";
-  movieDiv.innerHTML = `
+
+const movieElement = (movie) => {
+    console.log(movie);
+    const movieDiv = document.createElement("div");
+    let genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
+    movieDiv.className = "movie";
+    movieDiv.innerHTML = `
         <div class="movie-content">
             <h2>${movie[0]}</h2>
             <p class="movie-year">${movie[1]}</p>
             <p class="movie-producer">${movie[2]}</p>
             <p class="movie-length">${movie[3]}</p>
-            <p class="movie-genre">
-            <ul>
-            ${genre}
-            </ul></p>
+            <p class="movie-genre"><ul>${genre}</ul></p>
             <p class="movie-rating">${movie[5]}</p>
         </div>
     `;
-  movieContainer.appendChild(movieDiv);
-}
+    return movieDiv;
 }
 
-movieElement();
+for (let i = 0; i < movies.length; i++) {
+    movieContainer.appendChild(movieElement(movies[i]));
+}
+
+
 
 // funktion, die die Filme nach dem Titel sortiert und in der richtigen Reihenfolge anzeigt
 const sortMovies = () => {
@@ -92,5 +92,6 @@ const searchMovie = () => {
   }
   return searchMovie;
 };
+
 // Eventlistener, der die Suchfunktion ausführt, sobald eine Taste gedrückt wird, als eine Art Live-Suche
 document.getElementById("search").addEventListener("keyup", searchMovie);
