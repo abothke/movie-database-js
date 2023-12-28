@@ -5,6 +5,7 @@ import { movies } from "./movies.js";
 const movieContainer = document.getElementById("movie-container");
 
 // for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
+const movieElement = () =>{
 for (let i = 0; i < movies.length; i++) {
   const movieDiv = document.createElement("div");
   let movie = movies[i];
@@ -25,6 +26,9 @@ for (let i = 0; i < movies.length; i++) {
     `;
   movieContainer.appendChild(movieDiv);
 }
+}
+
+movieElement();
 
 // funktion, die die Filme nach dem Titel sortiert und in der richtigen Reihenfolge anzeigt
 const sortMovies = () => {
