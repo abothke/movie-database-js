@@ -18,7 +18,7 @@ for (let i = 0; i < movies.length; i++) {
             <p class="movie-genre">
             <ul>
             ${movie[4].map((genre) => `<li>${genre}</li>`).join("")}
-            </ul>${movie[4][0]}</p>
+            </ul></p>
             <p class="movie-rating">${movie[5]}</p>
         </div>
     `;
