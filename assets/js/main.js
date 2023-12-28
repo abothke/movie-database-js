@@ -88,4 +88,5 @@ const searchMovie = () => {
     return searchMovie
 }
 
-document.getElementById("search-btn").addEventListener("click", searchMovie);
+document.getElementById("search").addEventListener("keyup", searchMovie);
+
