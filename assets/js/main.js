@@ -1,5 +1,5 @@
 // importieren des Arrays movies aus der Datei movies.js
-import {movies} from './movies.js';
+import { movies } from './movies.js';
 
 // festlegen des Containers, in dem die Filme angezeigt werden sollen
 const movieContainer = document.getElementById("movie-container");
