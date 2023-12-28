@@ -24,13 +24,12 @@ const movieElement = (movie) => {
 }
 
 
-// Funktion, welche alle Werte aus dem DOM mit Klassen, die mit .movie-genre beginnen, die undefined sind, durch einen leeren String ersetzt nachdem der Inhalt durch javascript durch movieElement() erstellt wurde
-
 // for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
 for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
 }
 
+// Funktion, welche alle Werte aus dem DOM mit Klassen, die mit .movie-genre beginnen, die undefined sind, durch einen leeren String ersetzt nachdem der Inhalt durch javascript durch movieElement() erstellt wurde
 const replaceUndefined = () => {
     const movieContent = document.querySelectorAll("[class^='movie-genre']");
     for (let i = 0; i < movieContent.length; i++) {
