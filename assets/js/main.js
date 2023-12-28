@@ -74,6 +74,7 @@ const sortMoviesByRating = () => {
     return sortMoviesByRating
 }
 document.getElementById("best-rating-btn").addEventListener("click", sortMoviesByRating);
+<<<<<<< HEAD
 
 
 
@@ -88,3 +89,5 @@ const searchMovie = () => {
     return searchMovie
 }
 document.getElementById("search-btn").addEventListener("click", searchMovie);
+=======
+>>>>>>> e99aa36 (feat: Added function to sort by best-rating (descending))
