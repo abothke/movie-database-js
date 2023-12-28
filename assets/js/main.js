@@ -75,6 +75,9 @@ const sortMoviesByRating = () => {
 }
 document.getElementById("best-rating-btn").addEventListener("click", sortMoviesByRating);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9954abf (feat: Added function to search for a keyword and only showing the ones which match it using includes())
 
 
 
@@ -88,6 +91,10 @@ const searchMovie = () => {
     }
     return searchMovie
 }
+<<<<<<< HEAD
 document.getElementById("search-btn").addEventListener("click", searchMovie);
 =======
 >>>>>>> e99aa36 (feat: Added function to sort by best-rating (descending))
+=======
+document.getElementById("search-btn").addEventListener("click", searchMovie);
+>>>>>>> 9954abf (feat: Added function to search for a keyword and only showing the ones which match it using includes())
