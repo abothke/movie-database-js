@@ -7,11 +7,11 @@ const movieContainer = document.getElementById("movie-container");
 // for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
 
 const movieElement = (movie) => {
-    console.log(movie);
-    const movieDiv = document.createElement("div");
-    let genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
-    movieDiv.className = "movie";
-    movieDiv.innerHTML = `
+  console.log(movie);
+  const movieDiv = document.createElement("div");
+  let genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
+  movieDiv.className = "movie";
+  movieDiv.innerHTML = `
         <div class="movie-content">
             <h2>${movie[0]}</h2>
             <p class="movie-year">${movie[1]}</p>
@@ -21,14 +21,12 @@ const movieElement = (movie) => {
             <p class="movie-rating">${movie[5]}</p>
         </div>
     `;
-    return movieDiv;
-}
+  return movieDiv;
+};
 
 for (let i = 0; i < movies.length; i++) {
-    movieContainer.appendChild(movieElement(movies[i]));
+  movieContainer.appendChild(movieElement(movies[i]));
 }
-
-
 
 // funktion, die die Filme nach dem Titel sortiert und in der richtigen Reihenfolge anzeigt
 const sortMovies = () => {
