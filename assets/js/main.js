@@ -28,3 +28,13 @@ for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
 }
 
+// funktion, die die Filme nach dem Titel sortiert und in der richtigen Reihenfolge anzeigt
+const sortMovies = () => {
+    movies.sort();
+    movieContainer.innerHTML = "";
+    for (let i = 0; i < movies.length; i++) {
+        movieContainer.appendChild(movieElement(movies[i]));
+    }
+    return sortMovies
+}
+document.getElementById("alphabet-btn").addEventListener("click", sortMovies);
