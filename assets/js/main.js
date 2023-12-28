@@ -74,3 +74,17 @@ const sortMoviesByRating = () => {
     return sortMoviesByRating
 }
 document.getElementById("best-rating-btn").addEventListener("click", sortMoviesByRating);
+
+
+
+// Suchfunktion, die die Filme nach dem Titel durchsucht und die passenden Filme anzeigt
+const searchMovie = () => {
+    const searchInput = document.getElementById("search").value;
+    const searchResult = movies.filter(movie => movie[0].toLowerCase().includes(searchInput.toLowerCase()));
+    movieContainer.innerHTML = "";
+    for (let i = 0; i < searchResult.length; i++) {
+        movieContainer.appendChild(movieElement(searchResult[i]));
+    }
+    return searchMovie
+}
+document.getElementById("search-btn").addEventListener("click", searchMovie);
