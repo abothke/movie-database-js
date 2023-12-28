@@ -8,6 +8,7 @@ const movieContainer = document.getElementById("movie-container");
 for (let i = 0; i < movies.length; i++) {
   const movieDiv = document.createElement("div");
   let movie = movies[i];
+  let genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
   movieDiv.className = "movie";
   movieDiv.innerHTML = `
         <div class="movie-content">
@@ -17,7 +18,7 @@ for (let i = 0; i < movies.length; i++) {
             <p class="movie-length">${movie[3]}</p>
             <p class="movie-genre">
             <ul>
-            ${movie[4].map((genre) => `<li>${genre}</li>`).join("")}
+            ${genre}
             </ul></p>
             <p class="movie-rating">${movie[5]}</p>
         </div>
