@@ -23,3 +23,8 @@ const movieElement = (movie) => {
     return movieDiv;
 }
 
+// for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
+for (let i = 0; i < movies.length; i++) {
+    movieContainer.appendChild(movieElement(movies[i]));
+}
+
