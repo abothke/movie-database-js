@@ -3,10 +3,12 @@ import { movies } from './movies.js';
 
 // festlegen des Containers, in dem die Filme angezeigt werden sollen
 const movieContainer = document.getElementById("movie-container");
-// funktion, die ein einzelnes Film-Element erstellt
-const movieElement = (movie) => {
-    console.log(movie);
+
+
+// for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
+for (let i = 0; i < movies.length; i++) {
     const movieDiv = document.createElement("div");
+    let movie = movies[i]
     movieDiv.className = "movie";
     movieDiv.innerHTML = `
         <div class="movie-content">
@@ -14,32 +16,15 @@ const movieElement = (movie) => {
             <p class="movie-year">${movie[1]}</p>
             <p class="movie-producer">${movie[2]}</p>
             <p class="movie-length">${movie[3]}</p>
-            <p class="movie-genre-one">${movie[4][0]}</p>
-            <p class="movie-genre-two">${movie[4][1]}</p>
-            <p class="movie-genre-three">${movie[4][2]}</p>
+            <p class="movie-genre">
+            <ul>
+            ${movie[4].map((genre) => `<li>${genre}</li>`).join("")}
+            </ul>${movie[4][0]}</p>
             <p class="movie-rating">${movie[5]}</p>
         </div>
     `;
-    return movieDiv;
+    movieContainer.appendChild(movieDiv);
 }
-
-
-// for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
-for (let i = 0; i < movies.length; i++) {
-    movieContainer.appendChild(movieElement(movies[i]));
-}
-
-// Funktion, welche alle Werte aus dem DOM mit Klassen, die mit .movie-genre beginnen, die undefined sind, durch einen leeren String ersetzt nachdem der Inhalt durch javascript durch movieElement() erstellt wurde
-const replaceUndefined = () => {
-    const movieContent = document.querySelectorAll("[class^='movie-genre']");
-    for (let i = 0; i < movieContent.length; i++) {
-        if (movieContent[i].innerHTML === "undefined") {
-            movieContent[i].outerHTML = "<p style='color: #303030;'>e</p>";
-        }
-    }
-    return replaceUndefined
-}
-replaceUndefined();
 
 // funktion, die die Filme nach dem Titel sortiert und in der richtigen Reihenfolge anzeigt
 const sortMovies = () => {
