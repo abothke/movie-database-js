@@ -49,7 +49,7 @@ const sortMoviesByYearUp = () => {
   for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
   }
-  counter.textContent = `${movies.length}`
+  counter.textContent = `${movies.length} `
   return sortMoviesByYearUp;
 };
 document
@@ -63,7 +63,7 @@ const sortMoviesByYearDown = () => {
   for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
   }
-  counter.textContent = `${movies.length}`
+  counter.textContent = `${movies.length} `
   return sortMoviesByYearDown;
 };
 document
