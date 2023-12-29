@@ -61,6 +61,14 @@ input{
     text-align: center;
 }
 
+#counter-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+    font-size: 3rem;
+}
+
 .movie {
     max-width: 300px;
     margin: 1rem;
@@ -87,4 +95,5 @@ grid-gap: 1rem;
 width: 90%;
 margin: 0 auto;
 padding-top: 5rem;
+text-align: center;
 }

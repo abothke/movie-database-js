@@ -3,7 +3,9 @@ import { movies } from "./movies.js";
 
 // festlegen des Containers, in dem die Filme angezeigt werden sollen
 const movieContainer = document.getElementById("movie-container");
-
+const counterContainer = document.getElementById("counter-container")
+const counter = document.getElementById("counter")
+movieContainer.innerHTML = ""
 // for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
 
 const movieElement = (movie) => {
@@ -21,6 +23,7 @@ const movieElement = (movie) => {
             <p class="movie-rating">${movie[5]}</p>
         </div>
     `;
+    counter.textContent = `${movies.length} `
   return movieDiv;
 };
 
@@ -46,6 +49,7 @@ const sortMoviesByYearUp = () => {
   for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
   }
+  counter.textContent = `${movies.length}`
   return sortMoviesByYearUp;
 };
 document
@@ -59,6 +63,7 @@ const sortMoviesByYearDown = () => {
   for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
   }
+  counter.textContent = `${movies.length}`
   return sortMoviesByYearDown;
 };
 document
@@ -88,8 +93,27 @@ const searchMovie = () => {
   for (let i = 0; i < searchResult.length; i++) {
     movieContainer.appendChild(movieElement(searchResult[i]));
   }
+  if (searchResult.length == 0){
+    counterContainer.innerHTML = "Movie not found";
+  }
+  counter.textContent = `${searchResult.length} `
   return searchMovie;
 };
 
 // Eventlistener, der die Suchfunktion ausführt, sobald eine Taste gedrückt wird, als eine Art Live-Suche
 document.getElementById("search").addEventListener("keyup", searchMovie);
+
+const searchGenre = () => {
+    const genreInput = document.querySelector("#movie-genre-select").value;
+    const genreResult = movies.filter((movie) =>
+    movie[4].some(genre => genre.toLowerCase() === genreInput.toLowerCase())
+  );
+    movieContainer.innerHTML = "";
+    for (let i = 0; i < genreResult.length; i++) {
+        movieContainer.appendChild(movieElement(genreResult[i]));
+    }
+    counter.textContent = `${genreResult.length} `
+    return searchGenre;
+}
+document.querySelector("#movie-genre-select").addEventListener("change", searchGenre)
+
