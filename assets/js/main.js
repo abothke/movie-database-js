@@ -94,7 +94,9 @@ const searchMovie = () => {
     movieContainer.appendChild(movieElement(searchResult[i]));
   }
   if (searchResult.length == 0){
-    counterContainer.innerHTML = "Movie not found";
+    counterContainer.textContent = "Movie not found";
+  } else {
+    counterContainer.textContent = `${searchResult.length} Ergebnisse `
   }
   counter.textContent = `${searchResult.length} `
   return searchMovie;
