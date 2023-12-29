@@ -96,7 +96,7 @@ const searchMovie = () => {
   if (searchResult.length == 0){
     counterContainer.textContent = "Movie not found";
   } else {
-    counterContainer.textContent = `${searchResult.length} Ergebnisse `
+    counterContainer.textContent = `${searchResult.length} results `
   }
   counter.textContent = `${searchResult.length} `
   return searchMovie;
