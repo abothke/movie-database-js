@@ -17,7 +17,10 @@ const movieElement = (movie) => {
     movieDiv.className = "movie";
     bgDiv.className = "movie-bg";
     contentDiv.className = "movie-content";
-    contentDiv.innerHTML = `
+    contentDiv.onclick = function() {
+        window.location.href = `https://www.imdb.com/title/${movie[6]}/`;
+    };
+    contentDiv.innerHTML = ` 
           <h2>${movie[0]}</h2>
           <p class="movie-year">${movie[1]}</p>
           <p class="movie-producer">${movie[2]}</p>
