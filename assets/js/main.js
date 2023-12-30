@@ -1,5 +1,5 @@
 // importieren des Arrays movies aus der Datei movies.js
-import { movies, moviesPlus } from "./movies.js";
+import { movies, moviesPlus } from "./movies.js"; 
 
 // festlegen des Containers, in dem die Filme angezeigt werden sollen
 const movieContainer = document.getElementById("movie-container"); // Container, in dem die Filme angezeigt werden sollen
@@ -234,5 +234,5 @@ const addMovie = () => {
     for (let i = 0; i < moviesPlus.length; i++) {
         movieContainer.appendChild(movieElement(moviesPlus[i]));
     }
-    return addMovie;
+    return moviesPlus;
 }
