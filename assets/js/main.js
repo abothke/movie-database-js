@@ -19,7 +19,7 @@ const movieElement = (movie) => {
     } else {
         console.error('movie[4] is not an array:', movie[4]);
         genre = `<li>${movie[4]}</li>`; // Falls movie[4] kein Array ist, behandeln wir es als einzelnen Wert
-    } // Erstellen einer Liste für die Genres aus dem Array
+    }
     movieDiv.className = "movie"; // Hinzufügen der Klasse "movie" zum Div-Element
     bgDiv.className = "movie-bg"; // Hinzufügen der Klasse "movie-bg" zum Div-Element
     contentDiv.className = "movie-content"; // Hinzufügen der Klasse "movie-content" zum Div-Element
