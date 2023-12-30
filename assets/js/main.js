@@ -37,20 +37,20 @@ const movieElement = (movie) => {
     movieDiv.appendChild(bgDiv);
     movieDiv.appendChild(contentDiv);
     console.log(movie);
-    counter.textContent = `${movies.length} `;
+    counter.textContent = `${moviesPlus.length} `;
     return movieDiv;
   };
   
-for (let i = 0; i < movies.length; i++) {
+for (let i = 0; i < moviesPlus.length; i++) {
   movieContainer.appendChild(movieElement(moviesPlus[i]));
 }
 
 // funktion, die die Filme nach dem Titel sortiert und in der richtigen Reihenfolge anzeigt
 const sortMovies = () => {
-  movies.sort();
+  moviesPlus.sort();
   movieContainer.innerHTML = "";
-  for (let i = 0; i < movies.length; i++) {
-    movieContainer.appendChild(movieElement(movies[i]));
+  for (let i = 0; i < moviesPlus.length; i++) {
+    movieContainer.appendChild(movieElement(moviesPlus[i]));
   }
   return sortMovies;
 };
@@ -58,12 +58,12 @@ document.getElementById("alphabet-btn").addEventListener("click", sortMovies);
 
 // Funktion, die die Filme aufsteigend nach Jahr sortiert und darstellt.
 const sortMoviesByYearUp = () => {
-  movies.sort((a, b) => a[1] - b[1]);
+  moviesPlus.sort((a, b) => a[1] - b[1]);
   movieContainer.innerHTML = "";
-  for (let i = 0; i < movies.length; i++) {
-    movieContainer.appendChild(movieElement(movies[i]));
+  for (let i = 0; i < moviesPlus.length; i++) {
+    movieContainer.appendChild(movieElement(moviesPlus[i]));
   }
-  counter.textContent = `${movies.length} `
+  counter.textContent = `${moviesPlus.length} `
   return sortMoviesByYearUp;
 };
 document
@@ -72,12 +72,12 @@ document
 
 // Funktion, die die Filme absteigend nach Jahr sortiert und darstellt.
 const sortMoviesByYearDown = () => {
-  movies.sort((a, b) => b[1] - a[1]);
+  moviesPlus.sort((a, b) => b[1] - a[1]);
   movieContainer.innerHTML = "";
-  for (let i = 0; i < movies.length; i++) {
-    movieContainer.appendChild(movieElement(movies[i]));
+  for (let i = 0; i < moviesPlus.length; i++) {
+    movieContainer.appendChild(movieElement(moviesPlus[i]));
   }
-  counter.textContent = `${movies.length} `
+  counter.textContent = `${moviesPlus.length} `
   return sortMoviesByYearDown;
 };
 document
@@ -86,10 +86,10 @@ document
 
 // funktion, die die Filme nach dem Rating sortiert und in der richtigen Reihenfolge anzeigt
 const sortMoviesByRating = () => {
-  movies.sort((a, b) => b[5] - a[5]);
+  moviesPlus.sort((a, b) => b[5] - a[5]);
   movieContainer.innerHTML = "";
-  for (let i = 0; i < movies.length; i++) {
-    movieContainer.appendChild(movieElement(movies[i]));
+  for (let i = 0; i < moviesPlus.length; i++) {
+    movieContainer.appendChild(movieElement(moviesPlus[i]));
   }
   return sortMoviesByRating;
 };
@@ -100,7 +100,7 @@ document
 // Suchfunktion, die die Filme nach dem Titel durchsucht und die passenden Filme anzeigt
 const searchMovie = () => {
   const searchInput = document.getElementById("search").value;
-  const searchResult = movies.filter((movie) =>
+  const searchResult = moviesPlus.filter((movie) =>
     movie[0].toLowerCase().includes(searchInput.toLowerCase())
   );
   movieContainer.innerHTML = "";
@@ -121,7 +121,7 @@ document.getElementById("search").addEventListener("keyup", searchMovie);
 
 const searchGenre = () => {
     const genreInput = document.querySelector("#movie-genre-select").value;
-    const genreResult = movies.filter((movie) =>
+    const genreResult = moviesPlus.filter((movie) =>
     movie[4].some(genre => genre.toLowerCase() === genreInput.toLowerCase())
   );
     movieContainer.innerHTML = "";
