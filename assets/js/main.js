@@ -226,6 +226,7 @@ const addMovie = () => {
     document.getElementById("duration").value = "";
     document.getElementById("genre").value = "";
     document.getElementById("rating").value = "";
+    // Erfolgsnachricht wird angezeigt und die Farbe des Textes wird geändert.
     document.getElementById("newMovie").textContent = "Movie added to the database!";
     document.getElementById("newMovie").style.color = "red";
     document.getElementById("addMovie").textContent = "Add another Movie?";
