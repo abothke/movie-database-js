@@ -103,6 +103,9 @@ text-align: center;
     cursor: pointer;
 }
 
+.movie:hover .movie-bg {
+    scale: 1.1;
+}
 .movie-bg {
     position: absolute;
     top: 0;
