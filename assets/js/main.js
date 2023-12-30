@@ -17,7 +17,6 @@ const movieElement = (movie) => {
     if (Array.isArray(movie[4])) {
         genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
     } else {
-        console.error('movie[4] is not an array:', movie[4]);
         genre = `<li>${movie[4]}</li>`; // Falls movie[4] kein Array ist, behandeln wir es als einzelnen Wert
     }
     movieDiv.className = "movie"; // Hinzufügen der Klasse "movie" zum Div-Element
