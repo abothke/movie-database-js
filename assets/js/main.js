@@ -9,27 +9,35 @@ movieContainer.innerHTML = ""
 // for-schleife, die für jedes Element des Arrays movies ein Film-Element erstellt und in den Container einfügt
 
 const movieElement = (movie) => {
-  console.log(movie);
-  const movieDiv = document.createElement("div");
-  let genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
-  movieDiv.className = "movie";
-  movieDiv.innerHTML = `
-        <div class="movie-content">
-            <h2>${movie[0]}</h2>
-            <p class="movie-year">${movie[1]}</p>
-            <p class="movie-producer">${movie[2]}</p>
-            <p class="movie-length">${movie[3]}</p>
-            <p class="movie-genre"><ul>${genre}</ul></p>
-            <p class="movie-rating">${movie[5]}</p>
-        </div>
-    `
-    if (movie[6] !== undefined) {
-        movieDiv.innerHTML += `<a href="https://www.imdb.com/title/${movie[6]}" target="_blank"><img src="${movie[7]}" alt="movie poster"></a>`
-    }
     console.log(movie);
-    counter.textContent = `${movies.length} `
-  return movieDiv;
-};
+    const movieDiv = document.createElement("div");
+    const bgDiv = document.createElement("div");
+    const contentDiv = document.createElement("div");
+    let genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
+    movieDiv.className = "movie";
+    bgDiv.className = "movie-bg";
+    contentDiv.className = "movie-content";
+    contentDiv.innerHTML = `
+          <h2>${movie[0]}</h2>
+          <p class="movie-year">${movie[1]}</p>
+          <p class="movie-producer">${movie[2]}</p>
+          <p class="movie-length">${movie[3]}</p>
+          <p class="movie-genre"><ul>${genre}</ul></p>
+          <p class="movie-rating">${movie[5]}</p>
+      `;
+    if (movie[7] !== undefined) {
+      bgDiv.style.backgroundImage = `url(${movie[7]})`;
+      bgDiv.style.backgroundSize = "cover";
+      bgDiv.style.backgroundPosition = "center";
+      bgDiv.style.backgroundRepeat = "no-repeat";
+    }
+    movieDiv.appendChild(bgDiv);
+    movieDiv.appendChild(contentDiv);
+    console.log(movie);
+    counter.textContent = `${movies.length} `;
+    return movieDiv;
+  };
+  
 for (let i = 0; i < movies.length; i++) {
   movieContainer.appendChild(movieElement(moviesPlus[i]));
 }
