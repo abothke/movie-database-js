@@ -12,7 +12,14 @@ const movieElement = (movie) => {
     const movieDiv = document.createElement("div"); // Erstellen eines Div-Elements für jeden Film
     const bgDiv = document.createElement("div"); // Erstellen eines Div-Elements für den Hintergrund des Films
     const contentDiv = document.createElement("div"); // Erstellen eines Div-Elements für den Inhalt des Films
-    let genre = movie[4].map((genre) => `<li>${genre}</li>`).join(""); // Erstellen einer Liste für die Genres aus dem Array
+    let genre= "";
+    // Wenn movie[4] ein Array ist, wird eine Liste für die Genres erstellt, ansonsten wird der Wert als einzelner Wert behandelt
+    if (Array.isArray(movie[4])) {
+        genre = movie[4].map((genre) => `<li>${genre}</li>`).join("");
+    } else {
+        console.error('movie[4] is not an array:', movie[4]);
+        genre = `<li>${movie[4]}</li>`; // Falls movie[4] kein Array ist, behandeln wir es als einzelnen Wert
+    } // Erstellen einer Liste für die Genres aus dem Array
     movieDiv.className = "movie"; // Hinzufügen der Klasse "movie" zum Div-Element
     bgDiv.className = "movie-bg"; // Hinzufügen der Klasse "movie-bg" zum Div-Element
     contentDiv.className = "movie-content"; // Hinzufügen der Klasse "movie-content" zum Div-Element
