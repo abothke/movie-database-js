@@ -52,7 +52,7 @@ const sortMoviesByYearUp = () => {
   for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
   }
-  counter.textContent = `${movies.length}`
+  counter.textContent = `${movies.length} `
   return sortMoviesByYearUp;
 };
 document
@@ -66,7 +66,7 @@ const sortMoviesByYearDown = () => {
   for (let i = 0; i < movies.length; i++) {
     movieContainer.appendChild(movieElement(movies[i]));
   }
-  counter.textContent = `${movies.length}`
+  counter.textContent = `${movies.length} `
   return sortMoviesByYearDown;
 };
 document
@@ -97,7 +97,9 @@ const searchMovie = () => {
     movieContainer.appendChild(movieElement(searchResult[i]));
   }
   if (searchResult.length == 0){
-    counterContainer.innerHTML = "Movie not found";
+    counterContainer.textContent = "Movie not found";
+  } else {
+    counterContainer.textContent = `${searchResult.length} results `
   }
   counter.textContent = `${searchResult.length} `
   return searchMovie;
