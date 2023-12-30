@@ -1,5 +1,5 @@
 // importieren des Arrays movies aus der Datei movies.js
-import { movies } from "./movies.js";
+import { movies, moviesPlus } from "./movies.js";
 
 // festlegen des Containers, in dem die Filme angezeigt werden sollen
 const movieContainer = document.getElementById("movie-container");
@@ -22,13 +22,16 @@ const movieElement = (movie) => {
             <p class="movie-genre"><ul>${genre}</ul></p>
             <p class="movie-rating">${movie[5]}</p>
         </div>
-    `;
+    `
+    if (movie[6] !== undefined) {
+        movieDiv.innerHTML += `<a href="https://www.imdb.com/title/${movie[6]}" target="_blank"><img src="${movie[7]}" alt="movie poster"></a>`
+    }
+    console.log(movie);
     counter.textContent = `${movies.length} `
   return movieDiv;
 };
-
 for (let i = 0; i < movies.length; i++) {
-  movieContainer.appendChild(movieElement(movies[i]));
+  movieContainer.appendChild(movieElement(moviesPlus[i]));
 }
 
 // funktion, die die Filme nach dem Titel sortiert und in der richtigen Reihenfolge anzeigt
@@ -117,3 +120,22 @@ const searchGenre = () => {
 }
 document.querySelector("#movie-genre-select").addEventListener("change", searchGenre)
 
+
+
+async function fetchMovieDetails(movie) {
+    const title = movie[0];
+    const year = movie[1];
+    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&y=${year}&apikey=9443afe5`);
+    const data = await response.json();
+  
+    if (data.Response === "True") {
+      movie.push(data.imdbID);
+      movie.push(data.Poster);
+    }
+  }
+  
+  async function fetchAllMovieDetails() {
+    for (let movie of movies) {
+      await fetchMovieDetails(movie);
+    }
+  }
