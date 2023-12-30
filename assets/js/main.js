@@ -150,9 +150,74 @@ async function fetchMovieDetails(movie) {
       movie.push(data.Poster); // Poster des Films wird in das Array gepusht (wird für das Hintergrundbild benötigt)
     }
   }
+
 // Aufruf der Funktion, um die Details zu jedem Film zu holen
   async function fetchAllMovieDetails() {
     for (let movie of movies) {
       await fetchMovieDetails(movie);
     }
   }
+
+// Anzeigen und Ausblenden der Eingabemaske newMovie um einen neuen Film hinzuzufügen
+const displayMovieForm = () => {
+    document.getElementById("newMovie").style.color = "white";
+
+    // Eingabemaske für neuen Film
+    document.getElementById("newMovie").innerHTML = `
+    <form id="newMovieForm" onsubmit="return false">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" placeholder="Title">
+                <label for="year">Year:</label>
+                <input type="text" id="year" name="year" placeholder="Year">
+                <label for="director">Director:</label>
+                <input type="text" id="director" name="director" placeholder="Director">
+                <label for="duration">Duration:</label>
+                <input type="text" id="duration" name="duration" placeholder="Duration">
+                <label for="genre">Genre:</label>
+                <input type="text" id="genre" name="genre" placeholder="Genre">
+                <label for="rating">Rating:</label>
+                <input type="text" id="rating" name="rating" placeholder="Rating">
+                <label for="poster">Poster:</label>
+                <input type="text" id="poster" name="poster" placeholder="Poster">
+                <button type="button" id="submit">Add movie</button>
+            </form>`
+
+            // Eventlistener, der die Funktion addMovie ausführt, sobald der Button "Add movie" geklickt wird
+            document.getElementById("submit").addEventListener("click", addMovie);
+
+            // Anzeigen und Ausblenden der Eingabemaske
+            // Wenn der Button "Add a Movie?" oder "Add another Movie?" heißt, wird die Eingabemaske angezeigt ansonten ausgeblendet.
+    if (document.getElementById("addMovie").textContent === "Add a Movie?" || document.getElementById("addMovie").textContent === "Add another Movie?") {
+        document.getElementById("newMovie").style.visibility = "visible";
+        document.getElementById("addMovie").textContent = "Hide Form"; }
+    else { (document.getElementById("newMovie").style.visibility = "visible");
+    document.getElementById("newMovie").style.visibility = "";
+        document.getElementById("addMovie").textContent = "Add a Movie?";
+    }};
+
+    // Eventlistener, der die Funktion displayMovieForm ausführt, sobald der Button "Add a Movie?" geklickt wird
+document.getElementById("addMovie").addEventListener("click", displayMovieForm);
+
+// Funktion, die die Eingaben aus der Eingabemaske newMovie in ein Array speichert und an das Array moviesPlus pusht
+
+const addMovie = () => {
+    const title = document.getElementById("title").value; // Eingabes Titels als title
+    const year = document.getElementById("year").value; // Eingabes Jahres als year
+    const producer = document.getElementById("director").value; // Eingabes Regisseurs als producer
+    const duration = document.getElementById("duration").value; // Eingabes Dauer als duration
+    const genre = document.getElementById("genre").value; // Eingabes Genres als genre
+    const rating = document.getElementById("rating").value; // Eingabes Ratings als rating
+    const movie = [title, year, producer, duration, genre, rating]; // Eingaben werden in ein Array gespeichert
+    moviesPlus.push(movie); // Array wird an das Array moviesPlus gepusht
+    // Eingabemaske wird geleert und Text wird angezeigt und die Farbe des Textes wird geändert
+    document.getElementById("title").value = "";
+    document.getElementById("year").value = "";
+    document.getElementById("director").value = "";
+    document.getElementById("duration").value = "";
+    document.getElementById("genre").value = "";
+    document.getElementById("rating").value = "";
+    document.getElementById("newMovie").textContent = "Movie added to the database!";
+    document.getElementById("newMovie").style.color = "red";
+    document.getElementById("addMovie").textContent = "Add another Movie?";
+    return addMovie;
+}
