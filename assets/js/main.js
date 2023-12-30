@@ -217,7 +217,9 @@ const addMovie = () => {
     const duration = document.getElementById("duration").value; // Eingabes Dauer als duration
     const genre = document.getElementById("genre").value; // Eingabes Genres als genre
     const rating = document.getElementById("rating").value; // Eingabes Ratings als rating
-    const movie = [title, year, producer, duration, genre, rating]; // Eingaben werden in ein Array gespeichert
+    const poster = document.getElementById("poster").value; // Eingabes Posters als poster
+    const imdbID = ""; // leere ID
+    const movie = [title, year, producer, duration, genre, rating, imdbID, poster]; // Eingaben werden in ein Array gespeichert
     moviesPlus.push(movie); // Array wird an das Array moviesPlus gepusht
     // Eingabemaske wird geleert und Text wird angezeigt und die Farbe des Textes wird geändert
     document.getElementById("title").value = "";
@@ -230,5 +232,8 @@ const addMovie = () => {
     document.getElementById("newMovie").textContent = "Movie added to the database!";
     document.getElementById("newMovie").style.color = "red";
     document.getElementById("addMovie").textContent = "Add another Movie?";
+    for (let i = 0; i < moviesPlus.length; i++) {
+        movieContainer.appendChild(movieElement(moviesPlus[i]));
+    }
     return addMovie;
 }
