@@ -133,9 +133,15 @@ document.getElementById("search").addEventListener("keyup", searchMovie);
 // Funktion, die die Filme nach dem Genre durchsucht und die passenden Filme anzeigt
 const searchGenre = () => {
   const genreInput = document.querySelector("#movie-genre-select").value;
-  const genreResult = moviesPlus.filter((movie) =>
-    movie[4].some((genre) => genre.toLowerCase() === genreInput.toLowerCase())
-  );
+  const genreResult = moviesPlus.filter((movie) => {
+    // Überprüfen, ob movie[4] ein Array ist und array.some() verwenden, um zu überprüfen, ob der Input in dem Array enthalten ist
+    if (Array.isArray(movie[4])) {
+      return movie[4].some((genre) => genre.toLowerCase() === genreInput.toLowerCase());
+    } else {
+      // Wenn movie[4] kein Array ist, den einzelnen String mit dem Input vergleichen
+      return movie[4].toLowerCase() === genreInput.toLowerCase();
+    }
+  });
   movieContainer.innerHTML = "";
   console.log(genreResult);
   if (genreInput !== "all") {
