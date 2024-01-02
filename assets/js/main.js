@@ -137,10 +137,19 @@ const searchGenre = () => {
     movie[4].some((genre) => genre.toLowerCase() === genreInput.toLowerCase())
   );
   movieContainer.innerHTML = "";
+  console.log(genreResult);
+  if (genreInput !== "all") {
   for (let i = 0; i < genreResult.length; i++) {
     movieContainer.appendChild(movieElement(genreResult[i]));
+    counter.textContent = `${genreResult.length} `;
   }
-  counter.textContent = `${genreResult.length} `;
+} else {
+  for (let i = 0; i < moviesPlus.length; i++) {
+    movieContainer.appendChild(movieElement(moviesPlus[i]));
+    counter.textContent = `${moviesPlus.length} `;
+  }
+  
+}
   return searchGenre;
 };
 document
@@ -218,7 +227,6 @@ const displayMovieForm = () => {
 document.getElementById("addMovie").addEventListener("click", displayMovieForm);
 
 // Funktion, die die Eingaben aus der Eingabemaske newMovie in ein Array speichert und an das Array moviesPlus pusht
-
 const addMovie = () => {
   const title = document.getElementById("title").value; // Eingabes Titels als title
   const year = document.getElementById("year").value; // Eingabes Jahres als year
